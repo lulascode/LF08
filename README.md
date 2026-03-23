@@ -12,3 +12,5 @@
 ## Individuelle Lernziele - Rayk
 - Den Umgang von VS Code in Kombination mit Git tiefer verstehen.
 - Verständnis von Versionierung im Sysadmin-Kontext.
+- Branch management verstehen
+- sauberen Code erstellen
