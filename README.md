@@ -3,7 +3,7 @@
 ## Individuelle Lernziele - Jonas
 - 
 
-## Individuelle Lernziele - Jonas
+## Individuelle Lernziele - Lukas
 - 
 
 ## Individuelle Lernziele - Suzie
