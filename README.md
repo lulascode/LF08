@@ -14,7 +14,10 @@
 - Merge-Prozess durchführen und Konflikte lösen
 
 ## Individuelle Lernziele - Suzie
-- 
+- Git und VSCode verstehen und anwenden inkl. Merging bei Konflikten 
+- Branches verstehen und nutzen
+- Python Skills inkl. objektorientierter Programmierung verbessern
+
 
 ## Individuelle Lernziele - Rayk
 - Den Umgang von VS Code in Kombination mit Git tiefer verstehen.
