@@ -12,7 +12,7 @@
 
 body{
     display: grid;
-    grid-template-columns: 80%, 20%;
+    grid-template-columns: 80% 20%;
 }
 
 header{
@@ -21,6 +21,8 @@ header{
     background-color: grey;
     padding: 5px;
     margin: 10px;
+    display: flex;
+    align-content: space-between;
 }
 
 main{
@@ -50,4 +52,8 @@ footer{
 
 h2{
     font-family: Instrument Serif;
+}
+
+#logo_head{
+    width: 80px;
 }
