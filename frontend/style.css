@@ -20,6 +20,7 @@ header{
     border-radius: 5px;
     background-color: grey;
     padding: 5px;
+    margin: 10px;
 }
 
 main{
@@ -28,6 +29,7 @@ main{
     background-color: brown;
     padding: 5px;
     grid-column: 1/2;
+    margin: 10px;
 }
 
 aside{
@@ -35,6 +37,7 @@ aside{
     border-radius: 5px;
     background-color: green;
     padding: 5px;
+    margin: 10px;
 }
 
 footer{
@@ -42,6 +45,7 @@ footer{
     border-radius: 5px;
     background-color: blue;
     padding: 5px;
+    margin: 10px;
 }
 
 h2{
