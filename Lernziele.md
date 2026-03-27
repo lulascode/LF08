@@ -60,4 +60,4 @@ Dieses Dokument wird gemeinsam von der Tischgruppe gepflegt. Nutzt die Git-Befeh
 | Jonas | Projektmanagement |
 | Benni |  |
 | Lukas | Integration |
-| Rayk | Ziel |
+| Rayk | Backend |
