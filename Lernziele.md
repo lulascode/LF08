@@ -50,6 +50,7 @@ Dieses Dokument wird gemeinsam von der Tischgruppe gepflegt. Nutzt die Git-Befeh
 
 > **Aktueller Gruppen-Konsens:** > 
 - Gruppenlast fairer verteilen
+- Deadlines mehr als nur einhalten!
 
 ---
 
@@ -58,5 +59,5 @@ Dieses Dokument wird gemeinsam von der Tischgruppe gepflegt. Nutzt die Git-Befeh
 
 | Jonas | Projektmanagement |
 | Benni |  |
-| Lukas | Ziel |
+| Lukas | Integration |
 | Rayk | Ziel |
