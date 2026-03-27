@@ -1,10 +1,15 @@
-# Lernziele
+# 🎯 Unsere Lernziele LF 08 - Gruppe [Hier Nummer einfügen]
+
+Dieses Dokument wird gemeinsam von der Tischgruppe gepflegt. Nutzt die Git-Befehle, um eure individuellen Ziele zu ergänzen.
+
+---
+
+## 📚 Fachliche Ziele
+*Was wollen wir inhaltlich meistern?*
 
 ## Individuelle Lernziele - Jonas
 - Git Branches verstehen
 - Python Skills verbessern
-- Verteilung von Aufgaben (Projektmanagement)
-- Scrum Aufgabenkarten erstellen
 
 ## Individuelle Lernziele - Lukas
 - Funktionsweise und Nutzen von Git
@@ -24,3 +29,34 @@
 - Verständnis von Versionierung im Sysadmin-Kontext.
 - Branch management verstehen
 - sauberen Code erstellen
+
+## Individuelle Lernziele - Benni
+ - Lernziel
+
+
+---
+
+## 🛠 Methodische Ziele
+*Wie wollen wir arbeiten? (z.B. Zeitmanagement, Recherche)*
+3 Scrum Sprints
+3.1 Konzeptionierung
+3.2 Umsetzung
+3.3 Review
+* * ---
+
+## 🤝 Soziale Ziele
+**⚠️ ACHTUNG: KONFLIKT-ZONE!**
+*Hier darf nur EIN gemeinsames Ziel für die ganze Gruppe stehen.*
+
+> **Aktueller Gruppen-Konsens:** > 
+- Gruppenlast fairer verteilen
+
+---
+
+## 🌱 Persönlicher Fokus
+*Individuelle Schwerpunkte für diesen Block.*
+
+| Jonas | Projektmanagement |
+| Benni |  |
+| Lukas | Ziel |
+| Rayk | Ziel |
