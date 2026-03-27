@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  db:
+    image: mariadb:11
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: stinker
+      MYSQL_DATABASE: FPRL
+      MYSQL_USER: der_schwein
+      MYSQL_PASSWORD: der_schweine_priester
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
