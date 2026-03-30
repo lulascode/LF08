@@ -9,7 +9,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - ./backend/db_data:/var/lib/mysql
+      - ./src/db/db-data:/var/lib/mysql
     ports:
       - "3306:3306"
 
@@ -18,6 +18,6 @@ services:
     container_name: prl-nginx
     restart: always
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
-      - ./frontend:/usr/share/nginx/html:ro
+      - ./src/frontend:/usr/share/nginx/html:ro
