@@ -15,12 +15,12 @@ services:
 
   backend:
     build:
-      context: ./src/backend
-      dockerfile: dockerfile
+      context: .
+      dockerfile: src/backend/dockerfile
     container_name: prl-backend
     restart: always
     ports:
-      - "5000:5000"
+      - "80:5000"
     depends_on:
       - db
     environment:
@@ -30,12 +30,3 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-
-  nginx:
-    image: nginx:latest
-    container_name: prl-nginx
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - ./src/frontend:/usr/share/nginx/html:ro
