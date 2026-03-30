@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin</title>
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <link rel="stylesheet" href="./style.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <header>
+            <img src="img/prl_logo.png" a="Logo" id="logo_head">
+        </header>
+
+        <main>
+            <h2>Admin</h2>
+            <p>Überprüfe die Datenbankverbindung.</p>
+            <button id="check-db">Datenbank prüfen</button>
+            <div id="result" style="margin-top: 1rem;"></div>
+        </main>
+
+        <aside>
+            <h2>Admin</h2>
+            <p><a href="/">Zurück zur Startseite</a></p>
+        </aside>
+
+        <script>
+            const button = document.getElementById('check-db');
+            const result = document.getElementById('result');
+
+            button.addEventListener('click', async () => {
+                result.textContent = 'Überprüfe Verbindung...';
+                result.style.color = 'black';
+
+                try {
+                    const response = await fetch('/api/db-check');
+                    const data = await response.json();
+
+                    if (response.ok && data.status === 'ok') {
+                        result.textContent = data.message || 'Verbindung erfolgreich.';
+                        result.style.color = 'green';
+                    } else {
+                        result.textContent = data.message || 'Verbindung fehlgeschlagen.';
+                        result.style.color = 'red';
+                    }
+                } catch (error) {
+                    result.textContent = 'Fehler beim Prüfen: ' + error.message;
+                    result.style.color = 'red';
+                }
+            });
+        </script>
+    </body>
+</html>
