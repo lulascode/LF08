@@ -1,4 +1,4 @@
-/backend/db_data/*
+/src/db/db-data/*
 .env
 
 /test-frontend/*
