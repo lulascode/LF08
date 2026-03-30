@@ -1,9 +1,7 @@
-version: "3.8"
-
 services:
   db:
     image: mariadb:11
-    container_name: mariadb
+    container_name: prl-mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -12,10 +10,12 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./backend/db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
   nginx:
     image: nginx:latest
-    container_name: nginx
+    container_name: prl-nginx
     restart: always
     ports:
       - "8080:80"
