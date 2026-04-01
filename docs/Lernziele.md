@@ -30,9 +30,9 @@ Dieses Dokument wird gemeinsam von der Tischgruppe gepflegt. Nutzt die Git-Befeh
 - Branch management verstehen
 - sauberen Code erstellen
 
-## Individuelle Lernziele - Benni
- - Lernziel
-
+## Individuelle Lernziele - Benny
+ - UML Diagrams
+ - CI/ CD Automation
 
 ---
 
@@ -58,6 +58,6 @@ Dieses Dokument wird gemeinsam von der Tischgruppe gepflegt. Nutzt die Git-Befeh
 *Individuelle Schwerpunkte für diesen Block.*
 
 | Jonas | Projektmanagement |
-| Benni |  |
+| Benny | Backend |
 | Lukas | Integration |
 | Rayk | Backend |
