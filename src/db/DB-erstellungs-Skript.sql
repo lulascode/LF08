@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS Pig_Racing;
 CREATE Database Pig_Racing;
 
 use Pig_Racing;
@@ -7,14 +8,14 @@ CREATE TABLE video (
 	URL VARCHAR(256) NOT NULL 
 ) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE Rennen (
+CREATE TABLE rennen (
 	RennenID INT AUTO_INCREMENT PRIMARY KEY,
 	Beginnzeit FLOAT NOT NULL,
 	Endzeit FLOAT NOT NULL,
 	Gewinner VARCHAR(128) NOT NULL
 ) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE Schweine (
+CREATE TABLE schweine (
 	PigID Int AUTO_INCREMENT PRIMARY KEY,
 	Name Varchar(128) NOT NULL,
 	Beschleunigung INT NOT NULL, 
