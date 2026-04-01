@@ -1,0 +1,33 @@
+@startuml
+actor User
+participant Frontend
+participant Backend
+database Datenbank
+participant YouTube
+
+User -> Frontend: Seite öffnen
+Frontend -> Backend: GET /rennen
+Backend -> Datenbank: Lade verfügbare Rennen + Schweine
+Datenbank --> Backend: Daten zurück
+Backend --> Frontend: Rennen + Schweine anzeigen
+
+User -> Frontend: Schwein auswählen
+Frontend -> Backend: POST /selectPig (userId, pigId, gameId)
+Backend -> Datenbank: Speichere Auswahl
+Datenbank --> Backend: OK
+Backend --> Frontend: Bestätigung & Startsignal für Rennen mit Video-Embed
+
+    par Video abspielen
+        Frontend -> YouTube: Video laden (Race Video)
+        YouTube --> Frontend: Video-Stream
+    else Rennen auswerten
+        Frontend -> Backend: Anfrage zur Gewinnerberechnung
+        Backend -> Datenbank: Hole Renn-Ergebnis / Attribute
+        Datenbank --> Backend: Daten
+        Backend -> Backend: Bestimme Gewinner
+        Backend -> Datenbank: Speichere Gewinner
+    end
+
+Backend --> Frontend: Gewinner anzeigen
+Frontend --> User: Anzeige Gewinner + Belohnung
+@enduml

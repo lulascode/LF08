@@ -1,0 +1,18 @@
+@startuml
+start
+:Benutzer erstellt eine Runde;
+:Zufälliges Rennen aus der Datenbank auswählen;
+:Benutzer erhält die Stats der teilnehmenden Schweine;
+partition "Jeder Benutzer" {
+    :Benutzer wählt ein Schwein aus;
+}
+:Rennen starten;
+fork
+  :YouTube-Video abspielen;
+fork again
+  :Rennen auswerten;
+  :Gewinner bestimmen;
+end fork
+:Ergebnis anzeigen;
+stop
+@enduml
