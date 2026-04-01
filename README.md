@@ -7,6 +7,6 @@
 - Tracking über die Wetten
 - "Random Race" - Random Video mit Random Race (via Timestamp)
 
-![Aktivitätsdiagramm](.diagrams/Aktivitätsdiagramm.svg)
-![Sequenzdiagramm](.diagrams/Sequenzdiagramm.svg)
-![ERD](.diagrams/ERD.svg)
+![Aktivitätsdiagramm](./diagrams/Aktivitätsdiagramm.svg)
+![Sequenzdiagramm](./diagrams/Sequenzdiagramm.svg)
+![ERD](./diagrams/ERD.svg)
