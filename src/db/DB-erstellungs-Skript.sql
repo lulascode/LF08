@@ -10,9 +10,11 @@ CREATE TABLE video (
 
 CREATE TABLE rennen (
 	RennenID INT AUTO_INCREMENT PRIMARY KEY,
+	VideoID Int Not Null,
 	Beginnzeit FLOAT NOT NULL,
 	Endzeit FLOAT NOT NULL,
-	Gewinner VARCHAR(128) NOT NULL
+	Gewinner VARCHAR(128) NOT NULL,
+	FOREIGN KEY (VideoID) REFERENCES video(VideoID) ON DELETE CASCADE
 ) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE schweine (
@@ -23,4 +25,12 @@ CREATE TABLE schweine (
 	Gelaende_faehigkeit INT NOT NULL,
 	Handhabung INT NOT NULL,
 	Sprungkraft INT NOT NULL
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+create table rennen_schweine (
+	RennenID int,
+	PigID int,
+	PRIMARY KEY (RennenID, PigID),
+	FOREIGN KEY (RennenID) REFERENCES rennen(RennenID) ON DELETE CASCADE, 
+	FOREIGN KEY (PigID) REFERENCES schweine(PigID) ON DELETE CASCADE
 ) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
