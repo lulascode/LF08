@@ -13,9 +13,23 @@
 
         <main>
             <h2>Admin</h2>
-            <p>Überprüfe die Datenbankverbindung.</p>
-            <button id="check-db">Datenbank prüfen</button>
-            <div id="result" style="margin-top: 1rem;"></div>
+            <p>Hier kannst du Health-Checks ausführen und Beispielabfragen auf die Backend-API starten.</p>
+
+            <section>
+                <h3>Health Checks</h3>
+                <button id="check-db">Datenbank prüfen</button>
+                <button id="check-status">Backend-Status prüfen</button>
+                <div id="health-result" style="margin-top: 1rem;"></div>
+            </section>
+
+            <section style="margin-top: 2rem;">
+                <h3>Beispielabfragen</h3>
+                <button id="load-pigs">Schweine laden</button>
+                <button id="load-races">Rennen laden</button>
+                <button id="load-videos">Videos laden</button>
+                <div id="query-result" style="margin-top: 1rem;"></div>
+                <div id="query-data" style="margin-top: 1rem;"></div>
+            </section>
         </main>
 
         <aside>
@@ -24,29 +38,108 @@
         </aside>
 
         <script>
-            const button = document.getElementById('check-db');
-            const result = document.getElementById('result');
+            const checkDbButton = document.getElementById('check-db');
+            const checkStatusButton = document.getElementById('check-status');
+            const loadPigsButton = document.getElementById('load-pigs');
+            const loadRacesButton = document.getElementById('load-races');
+            const loadVideosButton = document.getElementById('load-videos');
+            const healthResult = document.getElementById('health-result');
+            const queryResult = document.getElementById('query-result');
+            const queryData = document.getElementById('query-data');
 
-            button.addEventListener('click', async () => {
-                result.textContent = 'Überprüfe Verbindung...';
-                result.style.color = 'black';
+            // Update a result container with a message and color.
+            function showMessage(container, message, color) {
+                container.textContent = message;
+                container.style.color = color;
+            }
 
+            // Create a HTML table from an array of objects.
+            function renderTable(items, container) {
+                container.innerHTML = '';
+
+                if (!Array.isArray(items) || items.length === 0) {
+                    container.textContent = 'Keine Daten gefunden.';
+                    return;
+                }
+
+                const table = document.createElement('table');
+                table.style.width = '100%';
+                table.style.borderCollapse = 'collapse';
+                table.style.marginTop = '0.5rem';
+
+                const headerRow = document.createElement('tr');
+                const columns = Object.keys(items[0]);
+
+                columns.forEach((column) => {
+                    const th = document.createElement('th');
+                    th.textContent = column;
+                    th.style.border = '1px solid #ccc';
+                    th.style.padding = '0.5rem';
+                    th.style.textAlign = 'left';
+                    headerRow.appendChild(th);
+                });
+
+                table.appendChild(headerRow);
+
+                items.forEach((item) => {
+                    const row = document.createElement('tr');
+                    columns.forEach((column) => {
+                        const td = document.createElement('td');
+                        td.textContent = item[column];
+                        td.style.border = '1px solid #ccc';
+                        td.style.padding = '0.5rem';
+                        row.appendChild(td);
+                    });
+                    table.appendChild(row);
+                });
+
+                container.appendChild(table);
+            }
+
+            // Fetch a JSON API endpoint and return parsed data.
+            async function fetchJson(endpoint) {
+                const response = await fetch(endpoint);
+                const data = await response.json();
+                return { response, data };
+            }
+
+            // Handle health check requests.
+            async function handleHealthCheck(endpoint, label) {
+                showMessage(healthResult, `${label} läuft...`, 'black');
                 try {
-                    const response = await fetch('/api/db-check');
-                    const data = await response.json();
-
+                    const { response, data } = await fetchJson(endpoint);
                     if (response.ok && data.status === 'ok') {
-                        result.textContent = data.message || 'Verbindung erfolgreich.';
-                        result.style.color = 'green';
+                        showMessage(healthResult, `${label}: ${data.message || 'OK'}`, 'green');
                     } else {
-                        result.textContent = data.message || 'Verbindung fehlgeschlagen.';
-                        result.style.color = 'red';
+                        showMessage(healthResult, `${label}: ${data.message || 'Fehler'}`, 'red');
                     }
                 } catch (error) {
-                    result.textContent = 'Fehler beim Prüfen: ' + error.message;
-                    result.style.color = 'red';
+                    showMessage(healthResult, `${label}: Fehler - ${error.message}`, 'red');
                 }
-            });
+            }
+
+            // Handle query requests and show the result table.
+            async function handleQuery(endpoint, label) {
+                showMessage(queryResult, `${label} wird geladen...`, 'black');
+                queryData.innerHTML = '';
+                try {
+                    const { response, data } = await fetchJson(endpoint);
+                    if (response.ok && data.status === 'ok') {
+                        showMessage(queryResult, `${label} erfolgreich geladen.`, 'green');
+                        renderTable(data.data, queryData);
+                    } else {
+                        showMessage(queryResult, `${label}: ${data.message || 'Fehler beim Laden'}`, 'red');
+                    }
+                } catch (error) {
+                    showMessage(queryResult, `${label}: Fehler - ${error.message}`, 'red');
+                }
+            }
+
+            checkDbButton.addEventListener('click', () => handleHealthCheck('/api/db-check', 'Datenbankprüfung'));
+            checkStatusButton.addEventListener('click', () => handleHealthCheck('/api/status', 'Backend-Status'));
+            loadPigsButton.addEventListener('click', () => handleQuery('/api/pigs', 'Schweine'));
+            loadRacesButton.addEventListener('click', () => handleQuery('/api/races', 'Rennen'));
+            loadVideosButton.addEventListener('click', () => handleQuery('/api/videos', 'Videos'));
         </script>
     </body>
 </html>
