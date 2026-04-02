@@ -4,12 +4,15 @@ services:
     container_name: prl-mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-Pig_Racing}
+      MYSQL_USER: ${MYSQL_USER:-der_schwein}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-der_schweine_priester}
+      MYSQL_HOST: ${MYSQL_HOST:-db}
     volumes:
       - ./src/db/db-data:/var/lib/mysql
+      - ./src/db/db-create.sql:/docker-entrypoint-initdb.d/01-create.sql
+      - ./src/db/db-seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
     ports:
       - "3306:3306"
 
@@ -24,9 +27,9 @@ services:
     depends_on:
       - db
     environment:
-      FLASK_ENV: development
-      MYSQL_HOST: db
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      FLASK_ENV: ${FLASK_ENV:-development}
+      MYSQL_HOST: ${MYSQL_HOST:-db}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-Pig_Racing}
+      MYSQL_USER: ${MYSQL_USER:-der_schwein}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-der_schweine_priester}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_password}
