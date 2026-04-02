@@ -6,28 +6,28 @@ database Datenbank
 participant YouTube
 
 User -> Frontend: Seite öffnen
-Frontend -> Backend: GET /rennen
-Backend -> Datenbank: Lade verfügbare Rennen + Schweine
-Datenbank --> Backend: Daten zurück
-Backend --> Frontend: Rennen + Schweine anzeigen
+Frontend -> Backend: GET pig_stats
+Backend -> Datenbank: GET pig_stats
+Datenbank --> Backend: pig_stats
+Backend -> Frontend: present pig_stats
 
-User -> Frontend: Schwein auswählen
-Frontend -> Backend: POST /selectPig (userId, pigId, gameId)
-Backend -> Datenbank: Speichere Auswahl
-Datenbank --> Backend: OK
-Backend --> Frontend: Bestätigung & Startsignal für Rennen mit Video-Embed
+User -> Frontend: Spiel starten und den Teilnehmern\n Schweine und Einsatz zuordnen
+Frontend -> Backend: GET random_rennen
+Backend -> Datenbank: GET random_rennen
+Datenbank --> Backend: YT-URL + Timestamps
+
+Backend --> Frontend: Startsignal für Rennen\n mit Video-Embed
 
     par Video abspielen
-        Frontend -> YouTube: Video laden (Race Video)
+        Frontend -> YouTube: Play Race Video
         YouTube --> Frontend: Video-Stream
-    else Rennen auswerten
+    else Rennen lokal auswerten
         Frontend -> Backend: Anfrage zur Gewinnerberechnung
-        Backend -> Datenbank: Hole Renn-Ergebnis / Attribute
-        Datenbank --> Backend: Daten
-        Backend -> Backend: Bestimme Gewinner
-        Backend -> Datenbank: Speichere Gewinner
+        Backend -> Datenbank: Hole Renn-Ergebnis
+        Datenbank --> Backend: Renn-Ergebnis
+        Backend --> Frontend: Renn-Ergebnis
+        Frontend -> Frontend: Bestimme Gewinner
     end
 
-Backend --> Frontend: Gewinner anzeigen
 Frontend --> User: Anzeige Gewinner + Belohnung
 @enduml

@@ -1,10 +1,10 @@
 @startuml
 start
+:Benutzer erhält die Stats der teilnehmenden Schweine;
 :Benutzer erstellt eine Runde;
 :Zufälliges Rennen aus der Datenbank auswählen;
-:Benutzer erhält die Stats der teilnehmenden Schweine;
 partition "Jeder Benutzer" {
-    :Benutzer wählt ein Schwein aus;
+    :Benutzer wählt ein Schwein und seinen Einsatz aus;
 }
 :Rennen starten;
 fork
