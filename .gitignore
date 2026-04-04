@@ -1,4 +1,2 @@
 /src/db/db-data/*
 .env
-
-/test-frontend/*
